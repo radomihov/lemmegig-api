@@ -55,4 +55,9 @@ class GigController extends Controller
 
         return response()->noContent();
     }
+
+    public function getPublicGigs()
+    {
+        return GigResource::collection(Gig::query()->where('is_public', 1));
+    }
 }
