@@ -10,13 +10,20 @@ class Meetup extends Model
 {
     use HasFactory;
 
+    protected $table = 'meetups';
+
     protected $casts = [
         'type' => MeetupType::class,
     ];
+    protected $appends = ['type_label'];
 
+    public function getTypeLabelAttribute(): string
+    {
+        return $this->type->label();
+    }
     public function gigs()
     {
-        return $this->belongsToMany(Gig::class);
+        return $this->belongsTo(Gig::class);
     }
     public function artists()
     {

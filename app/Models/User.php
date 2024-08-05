@@ -45,8 +45,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function person()
+    public function artists()
     {
-        return $this->hasOne(Person::class, 'id', 'person_id');
+        return $this->belongsToMany(Artist::class);
     }
 }

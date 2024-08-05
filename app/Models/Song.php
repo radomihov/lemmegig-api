@@ -9,6 +9,8 @@ class Song extends Model
 {
     use HasFactory;
 
+    protected $table = 'songs';
+
     public function meetups()
     {
         return $this->belongsToMany(Meetup::class);

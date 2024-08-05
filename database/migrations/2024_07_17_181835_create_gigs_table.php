@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('gigs', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
-            $table->string('name', 50);
-            $table->string('description', 256)->nullable();
+            $table->string('name', 255);
+            $table->string('description', 1000)->nullable();
             $table->string('fee');
             $table->boolean('is_public')->default(false);
             $table->timestamps();

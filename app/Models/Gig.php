@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Gig extends Model
 {
     use HasFactory;
+
+    protected $table = 'gigs';
+
     public function meetups()
     {
         return $this->hasMany(Meetup::class);
@@ -15,14 +18,14 @@ class Gig extends Model
     protected $fillable = [
         'image',
         'name',
-        'venue',
-        'artist',
         'description',
-        'start',
-        'end',
         'fee',
         'is_public',
         'created_at',
         'updated_at',
+    ];
+
+    protected $casts = [
+        'is_public' => 'boolean',
     ];
 }

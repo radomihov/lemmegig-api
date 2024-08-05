@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGigRequest;
 use App\Http\Requests\UpdateGigRequest;
 use App\Http\Resources\GigResource;
+use App\Http\Resources\GigCollection;
 use App\Models\Gig;
 
 class GigController extends Controller
@@ -15,7 +16,8 @@ class GigController extends Controller
      */
     public function index()
     {
-        return GigResource::collection(Gig::all());
+        $gigs = Gig::all();
+        return new GigCollection($gigs);
     }
 
     /**
@@ -58,6 +60,8 @@ class GigController extends Controller
 
     public function getPublicGigs()
     {
-        return GigResource::collection(Gig::query()->where('is_public', 1));
+//        $publicGigs = Gig::where('is_public', 1)->get();
+        return response()->noContent();
+//        return response()->json($publicGigs);
     }
 }

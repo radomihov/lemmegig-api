@@ -9,9 +9,11 @@ class Artist extends Model
 {
     use HasFactory;
 
-    public function people()
+    protected $table = 'artists';
+
+    public function users()
     {
-        return $this->belongsToMany(Person::class);
+        return $this->belongsToMany(User::class);
     }
 
     public function meetups()

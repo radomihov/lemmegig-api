@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
+use App\Enums\MeetupType;
 
-class StoreGigRequest extends FormRequest
+class StoreMeetupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +24,11 @@ class StoreGigRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'description' => 'required|string|max:1000',
-            'fee' => 'required|string',
+            'gig_id' => 'required|int',
+            'venue_id' => 'required|int',
+            'start' => 'required|date',
+            'end' => 'required|date|after:start',
+            'type' => [new Enum(MeetupType::class)],
         ];
     }
 }

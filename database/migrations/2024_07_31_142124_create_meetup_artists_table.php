@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('people', function (Blueprint $table) {
-            $table->id();
-            $table->string('first_name');
-            $table->string('middle_name');
-            $table->string('last_name');
-            $table->date('date_of_birth');
+        Schema::create('meetup_artists', function (Blueprint $table) {
+            $table->id()->autoIncrement();
+            $table->foreignId('meetup_id')->constrained()->onDelete('cascade');
+            $table->foreignId('artist_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('people');
+        Schema::dropIfExists('meetup_artists');
     }
 };

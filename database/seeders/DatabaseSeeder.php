@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
         Gig::factory(5)->create();
         Venue::factory(5)->create();
         Meetup::factory(5)->create();
-        Person::factory(5)->create();
         Artist::factory(5)->create();
         Song::factory(5)->create();
     }
